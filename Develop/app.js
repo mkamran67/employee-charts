@@ -55,11 +55,13 @@ function getManagerInfo() {
         engineerCount,
         internCount,
       }) => {
-        managerObj = new Manager(email, managerName, managerId, officeNumber);
-
+        managerObj = new Manager(managerName, managerId, email, officeNumber);
         returnObj.Manager = managerObj;
         returnObj.engineerCount = engineerCount;
         returnObj.internCount = internCount;
+
+        returnObj.engineer = getEmployeeInfo('engineer', engineerCount);
+        returnObj.intern = getEmployeeInfo('intern', internCount);
       }
     );
 
@@ -67,92 +69,85 @@ function getManagerInfo() {
 }
 
 function getEmployeeInfo(employeeType, count) {
+  let queryArr = [];
   let returnArr = [];
+  let tempObj = {};
 
+  // Build an Array of questions
   for (let i = 0; i < count; i++) {
-    inquirer
-      .prompt(
-        {
-          type: 'input',
-          name: `${employeeType}name`,
-          message: `${employeeType} number ${i + 1} name: `,
-          validate: function (name) {
-            if (name.length > 3) {
-              return true;
-            }
-            return 'Enter at least 3 characters:';
-          },
-        },
-        {
-          type: 'input',
-          name: `${employeeType}Email`,
-          message: `${employeeType} number ${i + 1} email: `,
-          validate: function (email) {
-            const regCheckemail = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    console.log(`${count} ${employeeType}`);
 
-            if (regCheckemail.test(String(email).toLowerCase())) {
-              return true;
-            } else {
-              return 'Please enter a valid email address';
-            }
-          },
-        },
-        {
-          type: 'input',
-          name: `${employeeType}Id`,
-          message: `${employeeType} number ${i + 1} ID: `,
-          validate: function (id) {
-            if (id.length >= 1) {
-              return true;
-            }
-
-            return 'Enter at least 1 character:';
-          },
-        },
-        {
-          type: 'input',
-          name: `${
-            employeeType === 'engineer' ? 'engineerGithub' : 'internSchool'
-          }`,
-          message: `${
-            employeeType === 'engineer'
-              ? `Engineer number ${i + 1} Github Username: `
-              : `Intern number ${i + 1} School name: `
-          }`,
-          validate: function (value) {
-            if (value.length > 3) {
-              return true;
-            }
-
-            return 'Enter at least 3 characters:';
-          },
+    queryArr.push({
+      type: 'input',
+      name: `${employeeType}name${i + 1}`,
+      message: `${employeeType} number ${i + 1} name: `,
+      validate: function (name) {
+        if (name.length > 3) {
+          return true;
         }
-      )
-      .then((answers) => {
-        returnArr.push(answers);
-      });
+        return 'Enter at least 3 characters:';
+      },
+    });
+    queryArr.push({
+      type: 'input',
+      name: `${employeeType}Email${i + 1}`,
+      message: `${employeeType} number ${i + 1} email: `,
+      validate: function (email) {
+        const regCheckemail = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+
+        if (regCheckemail.test(String(email).toLowerCase())) {
+          return true;
+        } else {
+          return 'Please enter a valid email address';
+        }
+      },
+    });
+    queryArr.push({
+      type: 'input',
+      name: `${employeeType}Id${i + 1}`,
+      message: `${employeeType} number ${i + 1} ID: `,
+      validate: function (id) {
+        if (id.length >= 1) {
+          return true;
+        }
+
+        return 'Enter at least 1 character:';
+      },
+    });
+    queryArr.push({
+      type: 'input',
+      name: `${
+        employeeType === 'engineer'
+          ? `engineerGithub${i + 1}`
+          : `internSchool${i + 1}`
+      }`,
+      message: `${
+        employeeType === 'engineer'
+          ? `Engineer number ${i + 1} Github Username: `
+          : `Intern number ${i + 1} School name: `
+      }`,
+      validate: function (value) {
+        if (value.length > 3) {
+          return true;
+        }
+
+        return 'Enter at least 3 characters:';
+      },
+    });
   } // End of For Loop
 
+  // console.log(queryArr);
+  inquirer.prompt(queryArr).then((answers) => {
+    returnArr.push(answers);
+  });
   return returnArr;
 }
 
-async function main() {
-  let name = 'namedwdawdqa';
-  let test = new Employee(name);
-
-  console.log(test);
-
-  // console.log(typeof test);
-
+function main() {
   // Variables
   // 1. Get Manager Details and
-  // let mainObj = await getManagerInfo();
-  // console.log(mainObj);
-  // // 2. Get Engineer -> Intern Details
-  // let engineerArr = await getEmployeeInfo('engineer', mainObj.engineerCount);
-  // console.log(engineerArr);
-  // let internArr = await getEmployeeInfo('intern', mainObj.internCount);
-  // console.log(internArr);
+  let mainObj = getManagerInfo();
+  console.log(mainObj);
 }
 
 main();

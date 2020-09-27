@@ -6,29 +6,20 @@ class Employee {
     this.email = email;
     this.id = id;
   }
-
-  set name(x) {
-    this._name = x;
-  }
-  get name() {
-    return this._name;
+  getName() {
+    return this.name;
   }
 
-  // id Setter and Getter
-  get id() {
-    return this._id;
-  }
-  set id(x) {
-    this._id = x;
+  getId() {
+    return this.id;
   }
 
-  // email Setter and Getter
-  get email() {
-    return this._email;
+  getEmail() {
+    return this.email;
   }
-  set email(x) {
-    this._email = x;
+
+  getRole() {
+    return 'Employee';
   }
 }
-
 module.exports.Employee = Employee;

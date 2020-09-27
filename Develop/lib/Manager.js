@@ -3,17 +3,17 @@ const { Employee } = require('./Employee');
 
 // Object Accepts -> email, name, id, officeNumber -> on Construct.
 class Manager extends Employee {
-  constructor(email, name, id, officeNumber) {
-    super(email, name, id);
+  constructor(name, id, email, officeNumber) {
+    super(name, id, email);
     this.officeNumber = officeNumber;
   }
 
-  get officeNumber() {
+  getRole() {
+    return 'Manager';
+  }
+
+  getOfficeNumber() {
     return this.officeNumber;
-  }
-
-  set officeNumber(officeNumber) {
-    this.officeNumber = officeNumber;
   }
 }
 module.exports.Manager = Manager;
