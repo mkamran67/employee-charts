@@ -12,6 +12,7 @@ const render = require('./lib/htmlRenderer');
 
 // Personal Modules
 const { managerQueries } = require('./modules/Questions'); // -> Questions
+const { Employee } = require('./lib/Employee');
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
@@ -136,15 +137,22 @@ function getEmployeeInfo(employeeType, count) {
 }
 
 async function main() {
+  let name = 'namedwdawdqa';
+  let test = new Employee(name);
+
+  console.log(test);
+
+  // console.log(typeof test);
+
   // Variables
   // 1. Get Manager Details and
-  let mainObj = await getManagerInfo();
-  console.log(mainObj);
-  // 2. Get Engineer -> Intern Details
-  let engineerArr = await getEmployeeInfo('engineer', mainObj.engineerCount);
-  console.log(engineerArr);
-  let internArr = await getEmployeeInfo('intern', mainObj.internCount);
-  console.log(internArr);
+  // let mainObj = await getManagerInfo();
+  // console.log(mainObj);
+  // // 2. Get Engineer -> Intern Details
+  // let engineerArr = await getEmployeeInfo('engineer', mainObj.engineerCount);
+  // console.log(engineerArr);
+  // let internArr = await getEmployeeInfo('intern', mainObj.internCount);
+  // console.log(internArr);
 }
 
 main();

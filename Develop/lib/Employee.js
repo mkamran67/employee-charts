@@ -1,34 +1,33 @@
 // TODO: Write code to define and export the Employee class
 // Class -> Email - Name - ID
 class Employee {
-  constructor(email, name, id) {
+  constructor(name, id, email) {
     this.name = name;
     this.email = email;
     this.id = id;
   }
 
+  set name(x) {
+    this._name = x;
+  }
   get name() {
-    return this.name;
+    return this._name;
   }
 
-  get email() {
-    return this.email;
-  }
-
+  // id Setter and Getter
   get id() {
-    return this.id;
+    return this._id;
+  }
+  set id(x) {
+    this._id = x;
   }
 
-  set name(name) {
-    this.name = name;
+  // email Setter and Getter
+  get email() {
+    return this._email;
   }
-
-  set email(email) {
-    this.email = email;
-  }
-
-  set id(id) {
-    this.id = id;
+  set email(x) {
+    this._email = x;
   }
 }
 
