@@ -2,11 +2,7 @@
 
 ### Video link
 
-<!-- blank line -->
-<figure class="video_container">
-  <iframe src="https://youtu.be/oe_cW5Y-cyE" frameborder="0" allowfullscreen="true"> </iframe>
-</figure>
-<!-- blank line -->
+![Video of porject](https://youtu.be/oe_cW5Y-cyE)
 
 ### Gif for Jest tests.
 
