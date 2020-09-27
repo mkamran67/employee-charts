@@ -2,7 +2,7 @@
 
 ### Video link
 
-![Video of porject](https://youtu.be/oe_cW5Y-cyE)
+[Video of porject](https://youtu.be/oe_cW5Y-cyE "Project Video")
 
 ### Gif for Jest tests.
 
