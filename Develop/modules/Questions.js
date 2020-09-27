@@ -30,15 +30,15 @@ const managerQueries = [
     type: 'input',
     name: 'email',
     message: 'What is the team lead email:',
-    validate: function (email) {
-      const regCheckEmail = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    // validate: function (email) {
+    //   const regCheckEmail = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
-      if (regCheckEmail.test(String(email).toLowerCase())) {
-        return true;
-      } else {
-        return 'Please enter a valid email address';
-      }
-    },
+    //   if (regCheckEmail.test(String(email).toLowerCase())) {
+    //     return true;
+    //   } else {
+    //     return 'Please enter a valid email address';
+    //   }
+    // },
   },
   {
     type: 'input',
@@ -86,4 +86,111 @@ const managerQueries = [
   },
 ];
 
-module.exports.managerQueries = managerQueries;
+const internQueries = [
+  {
+    type: 'input',
+    name: 'internName',
+    message: 'What is the intern name:',
+    validate: function (internName) {
+      if (internName.length > 3) {
+        return true;
+      }
+      return 'Please enter at least 3 characters';
+    },
+  },
+  {
+    type: 'input',
+    name: 'internId',
+    message: 'What is the intern id:',
+    // validate: function (internId) {
+    //   if (internId.length >= 1) {
+    //     return true;
+    //   }
+    //   return 'Please enter at least 1 character';
+    // },
+  },
+  {
+    type: 'input',
+    name: 'email',
+    message: 'What is the intern email:',
+    // validate: function (email) {
+    //   const regCheckEmail = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+
+    //   if (regCheckEmail.test(String(email).toLowerCase())) {
+    //     return true;
+    //   } else {
+    //     return 'Please enter a valid email address';
+    //   }
+    // },
+  },
+  {
+    type: 'input',
+    name: 'school',
+    message: 'What is the intern school:',
+    // validate: function (school) {
+    //   if (school.length >= 1) {
+    //     return true;
+    //   }
+    //   return 'Please enter at least 1 character';
+    // },
+  },
+];
+
+const engineerQueries = [
+  {
+    type: 'input',
+    name: 'engineerName',
+    message: 'What is the engineer name:',
+    validate: function (engineerName) {
+      if (engineerName.length > 3) {
+        return true;
+      }
+
+      return 'Please enter at least 3 characters';
+    },
+  },
+  {
+    type: 'input',
+    name: 'engineerId',
+    message: 'What is the engineer id:',
+    // validate: function (engineerId) {
+    //   if (engineerId.length >= 1) {
+    //     return true;
+    //   }
+
+    //   return 'Please enter at least 1 character';
+    // },
+  },
+  {
+    type: 'input',
+    name: 'email',
+    message: 'What is the engineer email:',
+    // validate: function (email) {
+    //   const regCheckEmail = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+
+    //   if (regCheckEmail.test(String(email).toLowerCase())) {
+    //     return true;
+    //   } else {
+    //     return 'Please enter a valid email address';
+    //   }
+    // },
+  },
+  {
+    type: 'input',
+    name: 'github',
+    message: 'What is the engineers github:',
+    // validate: function (github) {
+    //   if (github.length >= 1) {
+    //     return true;
+    //   }
+
+    //   return 'Please enter at least 1 character';
+    // },
+  },
+];
+
+module.exports = {
+  managerQueries,
+  internQueries,
+  engineerQueries,
+};
